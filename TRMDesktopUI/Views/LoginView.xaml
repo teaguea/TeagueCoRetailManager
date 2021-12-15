@@ -27,7 +27,7 @@
         </TextBlock>
 
         <!--Error Message Row-->
-        <TextBlock x:Name="ErrorMessage" Visibility="{Binding IsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"
+        <TextBlock x:Name="ErrorMessage" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"
                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                    Foreground="Red" MaxWidth="300"
                    TextWrapping="Wrap" Margin="0 0 0 20"
