@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Aaron\Documents\TeagueCoRetailManager\TRMDesktopUI.Library\TRMDesktopUI.Library.csproj" />
+    <ProjectReference Include="..\TRMDesktopUI.Library\TRMDesktopUI.Library.csproj" />
   </ItemGroup>
 
   <ItemGroup>
