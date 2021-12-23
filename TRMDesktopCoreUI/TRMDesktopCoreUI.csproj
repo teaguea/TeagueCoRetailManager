@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="Caliburn.Micro" Version="4.0.173" />
+    <PackageReference Include="Caliburn.Micro.Core" Version="4.0.173" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TeagueCoRetailManager\TRMDesktopUI.Library\TRMDesktopUI.Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SalesView.xaml.cs">
+      <DependentUpon>SalesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StatusInfoView.xaml.cs">
+      <DependentUpon>StatusInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UserDisplayView.xaml.cs">
+      <DependentUpon>UserDisplayView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SalesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StatusInfoView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserDisplayView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>
