@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TRMDesktopUI.Models
+namespace TRMDesktopUI.Library.Model
 {
     public class AuthenticatedUser
     {
