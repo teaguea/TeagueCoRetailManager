@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using TRMDesktopUI.Library.Model;
-using TRMDesktopUI.Models;
+using TRMDesktopCoreUI.Models;
 
 namespace TRMDesktopUI.Library.Api
 {
