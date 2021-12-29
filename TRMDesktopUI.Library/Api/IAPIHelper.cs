@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using TRMDesktopUI.Library.Model;
+using TRMDesktopUI.Models;
 
 namespace TRMDesktopUI.Library.Api
 {
