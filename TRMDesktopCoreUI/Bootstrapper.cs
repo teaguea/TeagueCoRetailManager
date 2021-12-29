@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ using System.Windows;
 using System.Windows.Controls;
 using TRMDesktopCoreUI.Helpers;
 using TRMDesktopUI.Library.Api;
-using TRMDesktopUI.Library.Helpers;
 using TRMDesktopUI.Library.Model;
 using TRMDesktopCoreUI.Models;
 using TRMDesktopCoreUI.ViewModels;
+using System.IO;
 
 namespace TRMDesktopCoreUI
 {
@@ -43,6 +44,20 @@ namespace TRMDesktopCoreUI
             return output;
         }
 
+        private IConfiguration AddConfiguration()
+        {
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+
+#if DEBUG
+            builder.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
+#else
+            builder.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
+#endif
+            return builder.Build();
+        }
+
         protected override void Configure()
         {
             _container.Instance(ConfigureAutomapper());
@@ -56,8 +71,9 @@ namespace TRMDesktopCoreUI
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>()
-                .Singleton<IConfigHelper, ConfigHelper>()
                 .Singleton<IAPIHelper, APIHelper>();
+
+            _container.RegisterInstance(typeof(IConfiguration), "IConfiguration", AddConfiguration());
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
