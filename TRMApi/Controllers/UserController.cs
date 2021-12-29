@@ -42,9 +42,18 @@ namespace TRMApi.Controllers
         [HttpGet]
         public UserModel GetById()
         {
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            try
+            {
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            return _userData.GetUserById(userId).First();
+                return _userData.GetUserById(userId).First();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }        
         }
 
         [Authorize(Roles = "Admin")]
