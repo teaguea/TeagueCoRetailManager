@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -44,9 +45,12 @@ namespace TRMApi.Controllers
         {
             try
             {
+                Debug.WriteLine("FINDING FIRST VALUE!");
+
                 string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                Console.WriteLine("THIS IS THE USER ID: {0}", userId);
+                Debug.WriteLine("THE USER ID WAS: " + userId);
+
 
                 return _userData.GetUserById(userId).First();
 
