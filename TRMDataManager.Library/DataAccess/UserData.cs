@@ -19,7 +19,7 @@ namespace TRMDataManager.Library.DataAccess
 
         public List<UserModel> GetUserById(string Id)
         {
-
+            Console.WriteLine("Inside GetUserById = " + Id);
             var output = _sql.LoadData<UserModel, dynamic>("dbo.spUserLookup", new { Id }, "TRMData");
 
             return output;
