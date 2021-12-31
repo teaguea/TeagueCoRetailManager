@@ -45,11 +45,11 @@ namespace TRMApi.Controllers
         {
             try
             {
-                Debug.WriteLine("FINDING FIRST VALUE!");
+                Console.WriteLine("FINDING FIRST VALUE!");
 
                 string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                Debug.WriteLine("THE USER ID WAS: " + userId);
+                Console.WriteLine("THE USER ID WAS: " + userId);
 
 
                 return _userData.GetUserById(userId).First();
