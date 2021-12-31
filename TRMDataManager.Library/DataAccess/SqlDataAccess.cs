@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TRMDataManager.Library.Internal.DataAccess
+namespace TRMDataManager.Library.DataAccess
 {
     public class SqlDataAccess : IDisposable, ISqlDataAccess
     {
@@ -109,7 +109,7 @@ namespace TRMDataManager.Library.Internal.DataAccess
                 {
                     ComitTransaction();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     _logger.LogError(ex, "Commit transaction failed in the dispose method.");
                 }
