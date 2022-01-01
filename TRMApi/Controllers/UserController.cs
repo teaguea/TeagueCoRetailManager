@@ -99,7 +99,7 @@ namespace TRMApi.Controllers
                 return roles;
         }
 
-        [Authorize(Roles = "Admin")]
+        
         [HttpPost]
         [Route("Admin/AddRole")]
         public async Task AddARole(UserRolePairModel pairing)
