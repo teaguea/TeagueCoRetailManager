@@ -18,7 +18,7 @@ namespace Portal.Authentication
         private readonly AuthenticationStateProvider _authStateProvider;
         private readonly ILocalStorageService _localStorage;
         private readonly IConfiguration _config;
-        private string authTokenStorageKey;
+        private readonly string authTokenStorageKey;
 
         public AuthenticationService(
             HttpClient client,
@@ -57,7 +57,7 @@ namespace Portal.Authentication
 
             await _localStorage.SetItemAsync(authTokenStorageKey, result.Access_Token);
 
-            ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(result.Access_Token);
+            await ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(result.Access_Token);
 
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", result.Access_Token);
 
@@ -66,9 +66,7 @@ namespace Portal.Authentication
 
         public async Task Logout()
         {
-            await _localStorage.RemoveItemAsync(authTokenStorageKey);
-            ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
-            _client.DefaultRequestHeaders.Authorization = null;
+            await ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
         }
 
     }

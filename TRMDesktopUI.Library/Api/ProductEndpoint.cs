@@ -10,7 +10,7 @@ namespace TRMDesktopUI.Library.Api
 {
     public class ProductEndpoint : IProductEndpoint
     {
-        private IAPIHelper _apiHelper;
+        private readonly IAPIHelper _apiHelper;
 
         public ProductEndpoint(IAPIHelper apiHelper)
         {
@@ -19,17 +19,15 @@ namespace TRMDesktopUI.Library.Api
 
         public async Task<List<ProductModel>> GetAll()
         {
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Product"))
+            using HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Product");
+            if (response.IsSuccessStatusCode)
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<List<ProductModel>>();
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                var result = await response.Content.ReadAsAsync<List<ProductModel>>();
+                return result;
+            }
+            else
+            {
+                throw new Exception(response.ReasonPhrase);
             }
         }
     }
