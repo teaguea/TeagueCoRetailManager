@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRMDesktopCoreUI", "TRMDesk
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{2F8E8603-E8DF-499A-B31D-90132F0AFB2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{B44FCF53-00D3-4FEE-8302-0579E65FB136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal", "Portal\Portal.csproj", "{B44FCF53-00D3-4FEE-8302-0579E65FB136}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
