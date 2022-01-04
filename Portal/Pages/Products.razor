@@ -1,5 +1,7 @@
 ﻿@page "/products"
+@using Microsoft.Extensions.Configuration
 @inject IProductEndpoint ProductEndpoint
+@inject IConfiguration config 
 @attribute [Authorize(Roles = "Cashier")]
 
 <h3>Products</h3>
@@ -21,7 +23,14 @@
                         <div class="row">
                             <div class="col-12">
                                 <a href="">
-                                    <img src="https://dummyimage.com/1200x900/000/fff" class="img-fluid" alt="Placeholder image" />
+                                    @if (string.IsNullOrWhiteSpace(product.ProductImage))
+                                    {
+                                        <img src="@( $"https://dummyimage.com/1200x900/000/fff" )" class="img-fluid" alt="Placeholder Image" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@( $"{api}{product.ProductImage}" )" class="img-fluid" alt="@product.ProductImage" />
+                                    }
                                 </a>
                                 <p class="my-2 text-justify">
                                     @product.Description
@@ -45,9 +54,11 @@
 
 @code {
     private List<ProductModel> products;
+    private string api;
 
     protected override async Task OnInitializedAsync()
     {
+        api = config.GetValue<string>("api");
         products = await ProductEndpoint.GetAll();
     }
 
